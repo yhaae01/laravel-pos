@@ -20,7 +20,7 @@ class SettingTableSeeder extends Seeder
             'alamat' => 'Jl. Kenangan',
             'telepon' => '08122222222',
             'tipe_nota' => 1, // kecil
-            'diskon' => 5,
+            'diskon' => 0, // Set default diskon dalam persen
             'path_logo' => '/img/logo.png',
             'path_kartu_member' => '/img/member.png',
         ]);

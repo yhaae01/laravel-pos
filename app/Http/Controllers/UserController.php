@@ -15,7 +15,7 @@ class UserController extends Controller
 
     public function data()
     {
-        $user = User::isNotAdmin()->orderBy('id', 'desc')->get();
+        $user = User::orderBy('id', 'desc')->get();
 
         return datatables()
             ->of($user)
@@ -54,7 +54,7 @@ class UserController extends Controller
         $user->name = $request->name;
         $user->email = $request->email;
         $user->password = bcrypt($request->password);
-        $user->level = 2;
+        $user->level = $request->level;
         $user->foto = '/img/user.jpg';
         $user->save();
 
@@ -97,8 +97,9 @@ class UserController extends Controller
         $user = User::find($id);
         $user->name = $request->name;
         $user->email = $request->email;
+        $user->level = $request->level;
         if ($request->has('password') && $request->password != "") 
-            $user->password = bcrypt($request->password);
+        $user->password = bcrypt($request->password);
         $user->update();
 
         return response()->json('Data berhasil disimpan', 200);

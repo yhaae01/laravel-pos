@@ -22,6 +22,7 @@
                         <th width="5%">No</th>
                         <th>Nama</th>
                         <th>Email</th>
+                        <th>Role</th>
                         <th width="15%"><i class="fa fa-cog"></i></th>
                     </thead>
                 </table>
@@ -50,8 +51,18 @@
                 {data: 'DT_RowIndex', searchable: false, sortable: false},
                 {data: 'name'},
                 {data: 'email'},
+                {
+                    data: 'level',
+                    'render': function(data, type, row) {
+                    if (data == 1) {
+                            return '<span class="label label-primary">Admin</span>';
+                        } else {
+                            return '<span class="label label-warning">Kasir</span>';
+                        }
+                    }
+                },
                 {data: 'aksi', searchable: false, sortable: false},
-            ]
+            ],
         });
 
         $('#modal-form').validator().on('submit', function (e) {
@@ -96,6 +107,7 @@
             .done((response) => {
                 $('#modal-form [name=name]').val(response.name);
                 $('#modal-form [name=email]').val(response.email);
+                $('#modal-form [name=level]').val(response.level);
             })
             .fail((errors) => {
                 alert('Tidak dapat menampilkan data');

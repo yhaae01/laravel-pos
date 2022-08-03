@@ -35,11 +35,6 @@ php artisan migrate
 ```bash
 php artisan db:seed
 ```
-atau
-```
-php artisan db:seed --class=UserTableSeeder
-php artisan db:seed --class=SettingTableSeeder
-```
 
 ## User
 1. Admin
